@@ -54,10 +54,10 @@ class MPT:
             """
 
             variance = pd.Series()
+            cov = np.cov(self.returns.T)
             for idx, row in self.mpt_results.iterrows():
                 var_val = 0
                 var_val = sum([row[i] ** 2 * np.var(self.returns[i]) for i in columns])
-                cov = np.cov(self.returns.T)
                 var_val += sum([np.dot(row[i], row[j]) * cov[i][j] for j in columns for i in columns if i != j])
 
                 variance[idx] = var_val
