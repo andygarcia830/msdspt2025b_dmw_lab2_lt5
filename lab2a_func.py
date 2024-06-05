@@ -75,7 +75,8 @@ def calculate_eigen_returns(w_prime, R):
 def plot_returns(year, F, R, ax):
     ax.plot(F[0].cumsum(),  label="Market Eigenportfolio Returns")
     ax.plot(R.cumsum(), label = "Market Cap Weighted Actual Returns")
-    ax.set_xlabel(year)
+    ax.set_ylabel(year)
+    ax.legend()
     
 def get_market_returns(startdate, days=None):
     spx_market = download('^SPX', startdate,days=days)
